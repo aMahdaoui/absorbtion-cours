@@ -430,10 +430,9 @@
     window.isChatbotVisible = false;
 
     function showHideChatbot() {
-        isChatbotVisible = !isChatbotVisible;
-        document.querySelector('.chatbot').style.visibility = isChatbotVisible ? 'hidden' : 'visible';
+        window.isChatbotVisible = !window.isChatbotVisible;
+        document.querySelector('.chatbot').style.visibility = window.isChatbotVisible ? 'visible' : 'hidden';
     }
-
     function responseVerification() {
         document.getElementById('responses').style.display = 'block';
     }
