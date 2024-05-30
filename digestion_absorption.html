@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    /* body {
+        display: flex;
+        margin: 0 150px;
+    } */
+
+    .title {
+        text-align: center;
+    }
+
+    .responses {
+        display: none;
+    }
+
+    .chatbot {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        height: calc(100vh - 120px);
+        width: 330px;
+        visibility: hidden;
+    }
+
+    .resources {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        bottom: 20px;
+        right: 10px;
+    }
+
+    #dialog {
+        padding: 0;
+        width: 90%;
+        max-height: 90%;
+    }
+
+    #dialogHeader {
+        background: beige;
+        position: fixed;
+        padding: 16px;
+        width: calc(90% - 32px);
+    }
+
+    #dialogContent {
+        padding: 90px 16px;
+    }
+
+    .chatBotButton {
+        width: 150px;
+        height: 56px;
+        background-image: url(assets/learnMore.png);
+        background-repeat: no-repeat;
+
+        /* height: 500px; */
+        /* width: 330px; */
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: #f2f2f2;
+    }
+
+    header {
+        /* background-color: #49666b; */
+        margin: auto;
+        text-align: center;
+        max-width: 1020px;
+        height: 80vh;
+        background-image: url(assets/imageTitle.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .headerWrapper {
+        /* background-color: #4CAF50; */
+        /* margin: auto;
+        max-width: 800px;
+        text-align: center;
+        height: 380px;
+        background-image: url('./imageTitle.jpg');
+        background-repeat: no-repeat;
+        background-size: 100% 100%; */
+    }
+
+    header h1 {
+        /* color: #fff; */
+        font-size: 36px;
+        margin: 0;
+        padding-top: 40px;
+    }
+
+    nav {
+        background-color: #333;
+        padding: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    nav li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 5px;
+    }
+
+    nav li a:hover {
+        background-color: #555;
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
+
+    section h2 {
+        color: #4CAF50;
+        margin-top: 0;
+    }
+
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+        margin: auto;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+
+    footer {
+        background-color: #333;
+        padding: 10px;
+        text-align: center;
+        color: #fff;
+        margin-top: 20px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <!-- <div class="headerWrapper"> -->
+        <h1>LECON N°1 : La digestion et l’absorption intestinale</h1>
+        <div>
+            <h3>Niveau: 3ème année cycle secondaire collegial</h3>
+            <h3>Séquence:L'absorption intestinale</h3>
+        </div>
+        <!-- </div> -->
+    </header>
+    <main>
+        <div class="resources">
+            <button class="chatBotButton" onclick="showHideChatbot()"></button>
+            <button onclick="window.dialog.showModal();">Support du cours</button>
+
+        </div>
+        <section id="objectifs">
+            <h2>Objectifs</h2>
+            <!-- <nav> -->
+            <ul>
+                <li>Comprendre la notion de l’absorption intestinale</li>
+                <li>Déduire les structures responsable à l'absorption</li>
+            </ul>
+            <!-- </nav> -->
+            <h3>Prérequis</h3>
+            <p>Les macromolécules sont simplifiées en petites molécules appelées nutriments</p>
+
+        </section>
+        <section id="situation">
+            <h2>Consignes</h2>
+            <div class="consign">
+                <ol type="1">
+                    <li>Regarder la vidéo et identifier les éléments suivants :
+                        <ul>
+                            <li>Le problème principal de la situation.</li>
+                            <li>Identifier les trois hypothèses formulées par les apprenants.</li>
+                        </ul>
+                    </li>
+
+                    <li>À l’aide des documents fournis, tester la validité de l’hypothèse de chaque apprenant en
+                        répondant aux questions suivantes:
+                        <ol type="a">
+                            <li>Qu’est-ce qu’on peut tirer comme information à partir du document 1.</li>
+                            <li>Comparer les données du tableau afin d'évaluer la validité de l'hypothèse concernant
+                                le lien entre l'état de la mère et les enzymes de digestion</li>
+                            <li>Analyser le document 3, qu’est-ce qu’on peut déduire ?</li>
+                            <li>En exploitant les documents 4,5 et 6 décrire la différence entre l’endoscopie
+                                intestinale de la mère et un sujet sain.</li>
+                            <li>Déterminer précisément l’origine de la maladie cœliaque (document 7).</li>
+                            <li>Préciser le rôle des villosités intestinales en comparant les deux simulations
+                                (document 8).</li>
+                        </ol>
+                    </li>
+                </ol>
+                <h3>Notes: </h3>
+                <ul>
+                    <li>Vous pouvez discuter avec le chatbot "Absbot" en cas de "blocage" ou d'incompréhensions, en
+                        cliquant
+                        sur le bouton "En savoir +" en bas à droite.</li>
+                    <li>Le support de cours est disponible, en cliquant
+                        sur le bouton "Support du cours" en bas à droite.</li>
+                </ul>
+
+                <p></p>
+
+            </div>
+            <!-- <div style="display: flex; gap: 10px;"> -->
+            <div style="text-align: center;" id="video-section1">
+                <video width="860" controls>
+                    <!-- <source src="movie.mp4" type="video/w"> -->
+                    <source src="situation.probleme/Situation problème.mp4" type="video/mp4">
+                    <!-- <source src="movie.ogg" type="video/ogg"> -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+
+
+            <!-- </div> -->
+
+        </section>
+        <section id="supportDuTravail">
+
+            <dialog id="dialog">
+
+                <div id="dialogHeader">
+                    <div style=" display: flex; justify-content: space-between;">
+                        <h2>Support du cours</h2>
+                        <form method="dialog">
+                            <button>X</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div id="dialogContent">
+                    <div id="document1">
+                        <h3>Document 1: Résultat du test tænia</h3>
+                        <h4>Bilan:</h4>
+                        <h5>Parasitologie des selles :</h5>
+                        <h5>Tænia saginata (ver solitaire):</h5>
+                        <h5>Résultat: Négatif</h5>
+
+                        Commentaire : Aucune présence de Tænia saginata détectée dans l'échantillon de selles analysé
+
+                    </div>
+                    <div id="document2">
+                        <h3>Document 2: Tableau d’analyses des enzymes digestives</h3>
+                        <table border="1">
+                            <tbody>
+                                <tr>
+                                    <th> Enzyme</th>
+                                    <th>Résultat</th>
+                                    <th>Unité</th>
+                                    <th>Plage de Référence</th>
+                                </tr>
+                                <tr>
+                                    <th>AST GOT</th>
+                                    <td>30</td>
+                                    <td> U/L</td>
+                                    <td>0-41</td>
+                                </tr>
+                                <tr>
+                                    <th>ALT GPT</th>
+                                    <td>19</td>
+                                    <td>U/L</td>
+                                    <td>0-42</td>
+                                </tr>
+                                <tr>
+                                    <th>L’élastase fécale</th>
+                                    <td>300</td>
+                                    <td>µg/g</td>
+                                    <td> &gt;200</td>
+                                </tr>
+                                <tr>
+                                    <th>Amylase</th>
+                                    <td>29</td>
+                                    <td>UI/L</td>
+                                    <td>10-45</td>
+                                </tr>
+                                <tr>
+                                    <th>Lipase</th>
+                                    <td>120</td>
+                                    <td>UI/L</td>
+                                    <td>&lt;160</td>
+                                </tr>
+                                <tr>
+                                    <th>Trypsine</th>
+                                    <td>45</td>
+                                    <td>µg/L</td>
+                                    <td>&lt;55</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="document3">
+                        <h3>Document 3: Quantité des Nutriments dans les Selles de la Mère</h3>
+                        <table border="1">
+                            <tbody>
+                                <tr>
+                                    <td> </td>
+                                    <td>Valeurs Normales</td>
+                                    <td>Les selles de la mère</td>
+                                </tr>
+                                <tr>
+                                    <td>Poids</td>
+                                    <td>150g</td>
+                                    <td>&gt;300</td>
+                                </tr>
+                                <tr>
+                                    <td>Lipides</td>
+                                    <td><mark>Traces</mark></td>
+                                    <td> <mark>+++</mark></td>
+                                </tr>
+                                <tr>
+                                    <td>Glucides</td>
+                                    <td><mark>Traces</mark></td>
+                                    <td><mark>+++</mark></td>
+                                </tr>
+                                <tr>
+                                    <td>Azote</td>
+                                    <td>0</td>
+                                    <td><mark>+++</mark></td>
+                                </tr>
+                                <tr>
+                                    <td>Sodium</td>
+                                    <td><mark>Trace</mark></td>
+                                    <td><mark>+++</mark></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="document4">
+                        <h3>Document 4: L’endoscopie de l’intestin grêle de la mère et un autre sain.</h3>
+                        <img width="100%" src="image.doc4/endoscopie.jpg" alt="endoscopie" />
+                        <h5 align="left">a.l’endoscopie de l’intestin grêle chez la
+                            mère</h5>  
+                            <h5 align="left">b.L’endoscopie de l’intestin grêle chez un
+                                sujet sain</h5>
+                                <h3 align="center"><mark>NB : l’endoscopie de la mère indique qu’elle a une maladie intestinale s’appelle la maladie
+                                    cœliaque</mark></h3>
+                    </div>
+                    <div id="document5">
+                        <h3>Document 5: La biopsie duodénale chez un sujet sain.</h3>
+                        <img width="100%" src="image.doc5-6/biopsie.jpg" alt="biopsie" />
+                    </div>
+                    <div id="document6">
+                        <h3>Document 6: Biopsie duodénale chez la mère atteinte de la maladie cœliaque.</h3>
+                        <img width="100%" src="image.doc5-6/biopsie6.jpg" alt="biopsie" />
+                    </div>
+                    <div id="document7">
+                        <h3>Document 7: vue microscopique au niveau de l’Intestin grêle (villosité intestinale).</h3>
+                        <div style="display: flex; gap: 10px">
+                            <img width="50%" src="image.doc7/vue microscopique.jpg" />
+                            <img width="50%" src="image.doc7/vue microscopiue2.jpg" />
+
+                        </div>
+                    </div>
+                    <div id="document8">
+                        <h3>Document 8 : Simulations des Villosités Intestinales dans la Normale et la Maladie Cœliaque.
+                        </h3>
+                        <div style="display: flex; gap: 10px">
+                            <div style="width: 50%; text-align: center;">
+                                <video style="display: block;" width="100%" controls>
+                                    <!-- <source src="movie.mp4" type="video/w"> -->
+                                    <source src="simulations/simulation3D.mp4" type="video/mp4">
+                                    <!-- <source src="movie.ogg" type="video/ogg"> -->
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span>a. villosités intestinales affecté par la Maladie
+                                    Cœliaque</span>
+                            </div>
+                            <div style="width: 50%; text-align: center;">
+                                <video style="display: block;" width="100%" controls>
+                                    <!-- <source src="movie.mp4" type="video/w"> -->
+                                    <source src="simulations/simulation3D-2.mp4" type="video/mp4">
+                                    <!-- <source src="movie.ogg" type="video/ogg"> -->
+                                    Your browser does not support the video tag.
+                                </video>
+                                <span>a. villosités intestinales normales</span>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </dialog>
+
+        </section>
+        <section id="chatbot">
+            <iframe class="chatbot" src="https://creator.voiceflow.com/prototype/661f03fd03fc48762eef13c8"
+                title="description"></iframe>
+        </section>
+    </main>
+</body>
+
+<script>
+    window.isChatbotVisible = false;
+
+    function showHideChatbot() {
+        isChatbotVisible = !isChatbotVisible;
+        document.querySelector('.chatbot').style.visibility = isChatbotVisible ? 'hidden' : 'visible';
+    }
+
+    function responseVerification() {
+        document.getElementById('responses').style.display = 'block';
+    }
+</script>
+
+</html>
